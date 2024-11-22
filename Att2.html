@@ -1,0 +1,219 @@
+<html>
+
+    <head>
+
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+        <script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=maUyK07pAihuPdPxMALdUkAtTZonMxPOPa7sFhXo5G1qeFKg0XB7I3T5L90uOzbkdxmU6qggzSqg4GqBFi2mXehDyA6deXJ7sXLgezptTpc9_SQTjzmh-jyG-ONgCLnyxwXy-t3K1XfmwDDQDBtVMLtjPVJJ36ZnErxQzsCUTa91v3uEXu67JWynhU4igfqOmpEcctrKI6hbmRrOAv8KDgEkduIkiZdbrXdPpA5KYkd-YZvCd9PEKYN1Q8ag7CLaxwMqyWoJj9XDs0x8xM-fmcYfkpEX9dyZX0WawIsoUMtYnmLf7Q-r4YB2Si_bLizpbxSAu2m4VT1oax4k6lbluNNgnlv1QXOx_0k7jvYbUPoQjASVX5DC5zHhLGONIFiirA_MrDS7pKlhtGqtm5uBntkpPpDcuphVfBpYqV34pzV3H5Sf9ITFH0IB0e4zNeSR2Z4NhrrZmha78HA_1T-NUC4nfTobWaKjIfSx6AZfQzNA1DBgOHouriXAJzlv2e7BeECD4DxDJ-oHVr1PUXUjW71GnjPhILPVvxV-MU5-GKoYAb-n4txzDcWeofXTVDe7f2pNuerwevGZxA13hmpVnSSqghlVQxZ16bRwjFSraGbvRTP5BrCYMqbziCD3s-CqN5qyd1lYgl-ADFT3f_xcCwyClvB72oI-sDIjErX9Bv5m5ipaLbpFl8hw1HFIAsWrjrYEIEMA0oAfq_WrwvHb982utueyaEkpXEKvHjpJYlgVx6iVAo2wINPhNftVY6zLZxSLpTn17RmUY2TneozpRBxmJA5tXRqbcTr58yXh_EStuuEBx2uxtUuggAkUzCAPN9iNeSAEuoHKVTMyt970wDlGT5IMxqO9F39XIwSMHHyfMd9AcLPA2hQMaSg2vfbAiumB03RQyLxfCB_xU9yjz7f3vkLCJcVD5YAidC8SpL3R4J70EL60gCyAHZL5bl8IKS3YjnkvwUpZIoo2O2kHxiRx2SnaDWHKoyraA6__AOGN72FMfEWTsOgj0t9y7g5F2MK2F0mG2dtyZdPgNnC54-V_d0aV9mpOLU0MdcTDIemqb03Ck3ud3sYnecX2DIGj_MKfApxvAYUXYFLBPiEjpr1V_gjPWHKMa-DwwGFz4Q9fmbDwAvmd-3c9f0V0VF4dLTchhSQGIVRdGUSXMRLRXcTSPEzF2ErLiTPxZ_zFSukC-Qrbl3UDDP-XztKMsdz-qkigLO90fOB9eKEtaWm114f9Af2uv-PGb-11jrOCL1PfMi0-Km272I9x3WTPLrAcYcdHhNrFP-nV6yBNlfTX0wQGdgAlNZC-xdU8G9dWoSNeKlG43VwXeVw2wEOHfJYxLK4RbG6SRelb3S4bYC2Ctox6WjlKFa87vodA7pYEYO8XgbOgdP7MLO8JYNq8dqdfIzG6TEEHTjJaFR3bIP4jhXqw_LdlH0FY2VrvlmXzZGKPEoV3pbo_4Hr2FldehgPdY_K6AjLPMC-tMowLcc-E7svFxz9yBEPZ8KqdObw6DzyR_N24HRplhHQifp21Czb0Nz18WN9sAzCCTI4nGoG56lVWUiFCFwGWtuL6AyJKv16kGI1TIMRyCx_TB1uX5mPPPed9fU8yhbHpmmDJvAnd5xSSWopMj9ghKuE_Vb9zs7cHD8NNajONp4Foc55fBdM0kUi2NkRu-wUyIFIioucb6L5DyB4cF3mrlux4LC1h_HLWhH8ydcchT3fiQX9SzVeeEs0pKX6WBSz7Xf-us-bGm4ok76rEwh6RRYTRl7T2y_1aeHPHtX3H-W6BWe0f6VXrgB0xxVk7xJ64zHWAl0R-d6Zm36snw0OJ7FTfp5p-sycqy8Orqv4r4H2dHHPn95Vw" charset="UTF-8"></script><script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+        <script>
+
+            var tipo, marca, modelo, ano;
+
+            function marcas(t){
+
+                tipo = t;
+
+                $("#marcas").html("<h3>Selecione a Marca do Veículo</h3>");
+
+                $.get("https://parallelum.com.br/fipe/api/v1/"+tipo+"/marcas", function(data, status){
+
+                   
+
+                    for(linha in data){
+
+                        $("#marcas").append('<div class="w3-third w3-mobile w3-panel"><div class="w3-card w3-container w3-light-grey w3-center"><h4>'+data[linha].nome+'</h4><button class="w3-button w3-blue w3-margin-bottom" onclick="modelos('+data[linha].codigo+');">Selecionar</button></div></div>');
+
+                    }
+
+                    $("#marcas").removeClass('w3-hide');
+
+                });
+
+            }
+
+           
+
+            function modelos(m){
+
+                marca = m;
+
+                $("#modelos").html("<h3>Selecione o Modelo do Veículo</h3>");
+
+                $.get("https://parallelum.com.br/fipe/api/v1/"+tipo+"/marcas/"+marca+"/modelos", function(data, status){
+
+                   
+
+                    for(linha in data.modelos){
+
+                        $("#modelos").append('<div class="w3-third w3-mobile w3-panel"><div class="w3-card w3-container w3-light-grey w3-center"><h4>'+data.modelos[linha].nome+'</h4><button class="w3-button w3-blue w3-margin-bottom" onclick="anos('+data.modelos[linha].codigo+');">Selecionar</button></div></div>');
+
+                    }
+
+                    $("#modelos").removeClass('w3-hide');
+
+                });
+
+            }
+
+           
+
+            function anos(a){
+
+               
+
+                modelo = a;
+
+                    $("#anos").html("<h3>Selecione o Ano de Fabricação do Veículo</h3>");
+
+                    $.get("https://parallelum.com.br/fipe/api/v1/" + tipo + "/marcas/" + marca + "/modelos/" + modelo + "/anos", function(data, status) {
+
+                   
+
+                    for (linha in data) {
+
+                    $("#anos").append('<div class="w3-third w3-mobile w3-panel"><div class="w3-card w3-container w3-light-grey w3-center"><h4>' + data[linha].nome + '</h4><button class="w3-button w3-blue w3-margin-bottom" onclick="valores(\'' + data[linha].codigo + '\');">Selecionar</button></div></div>');
+
+        }
+
+                     $("#anos").removeClass('w3-hide');
+
+    });
+
+ 
+
+           
+
+            }
+
+           
+
+            function valores(p){
+
+       
+
+                ano = p;
+
+                    $("#valor").html("<h3>Valores do Veículo</h3>");
+
+                    $.get("https://parallelum.com.br/fipe/api/v1/" + tipo + "/marcas/" + marca + "/modelos/" + modelo + "/anos/" + ano, function(data, status) {
+
+                    $("#valor").append('<div class="w3-container w3-light-grey w3-center"><p>Valor: ' + data.Valor + '</p></div>');
+
+                    $("#valor").removeClass('w3-hide');
+
+    });
+
+}
+
+ 
+
+       
+
+   
+
+        </script>
+
+    </head>
+
+    <body class="w3-dark-gray">
+
+ 
+
+        <div class="w3-container w3-row">
+
+            <div id="tipo">
+
+                <h3>Selecione o Tipo de Veículo</h3>
+
+                <div class="w3-third w3-mobile w3-panel">
+
+                    <div class="w3-card w3-container w3-light-grey w3-center">
+
+                     <h4>Carro</h4>
+
+                     <i class="fas fa-car w3-jumbo w3-text-white"></i>
+
+                     <h5>Carros, pickups e utilitários</h5>
+
+                     <button class="w3-button w3-blue w3-margin-bottom" onclick="marcas('carros');">Selecionar</button>
+
+                    </div>
+
+                </div>
+
+ 
+
+                <div class="w3-third w3-mobile w3-panel">
+
+                    <div class="w3-card w3-container w3-light-grey w3-center">
+
+                     <h4>Moto</h4>
+
+                     <i class="fas fa-motorcycle w3-jumbo w3-text-white"></i>
+
+                     <h5>Motos, triciclos e quadriciclos</h5>
+
+                     <button class="w3-button w3-blue w3-margin-bottom" onclick="marcas('motos');">Selecionar</button>
+
+                    </div>
+
+                </div>
+
+ 
+
+                <div class="w3-third w3-mobile w3-panel">
+
+                    <div class="w3-card w3-container w3-light-grey w3-center">
+
+                     <h4>Caminhão</h4>
+
+                     <i class="fas fa-truck-moving w3-jumbo w3-text-white"></i>
+
+                     <h5>Caminhões em geral</h5>
+
+                     <button class="w3-button w3-blue w3-margin-bottom" onclick="marcas('caminhoes');">Selecionar</button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+           
+
+            <div id="marcas" class="w3-hide w3-container w3-row">
+
+               
+
+            </div>
+
+           
+
+            <div id="modelos" class="w3-hide w3-container w3-row">
+
+                <h3>Selecione o Modelo do Veículo</h3>
+
+            </div>
+
+           
+
+            <div id="anos" class="w3-hide w3-container w3-row">
+
+                <h3>Selecione o Ano de Fabricação de Veículo</h3>
+
+            </div>
+
+           
+
+            <div id="valor" class="w3-hide w3-container w3-row">
+
+               
+
+            </div>
+
+        </div>
+
+    </body>
+
+</html>
