@@ -1,0 +1,141 @@
+<html>
+	<head>
+		<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+	<script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=-T5itN4WXGrTI6bvmBVqWRu6mB98sGE9dLlEPRiSLYwVs-WlCtgsKr_3GxeahVonoReq7k4CwCZrrDYBEt_3LNcYxFHffTs0haUj4-JFQ55v6HiWsLVSuSL3O2ALM_XMSfvlwXOSeYP1Jk2ineuc4eB56MVzwnl6AJjV-kJff_2_ugqFblmyWCfEhlflS5zvbW6Nv_-zDEuIFJqWFSMfxZRjfCn4LANg-wbQO3t83AtxeFAmqYC6iC59YmXOHUR0z0S9vj7M-lqvKA0IqWR069luins-K5TVL4zAgcaQwJfS2JFAD5AItp2JuKp8IgVlsK34jAWNTxMEue2WbAIRqljUkQ221e5pJwgDtwZhTCqEjDNeeC44GWXJX6m7JVwXkiNu9ual-cJEN9WYZLRy895oLKeQX7hl5ODPkPJvBdByLVxH-t3TfS3ajngxBet_dM38ZJ1pAyX2n_hbvPWZabBV46G95NYT63lU1MhEh4IF6en0W9o3cYEHNMYiYZoGkC6APpEc-d5AwizNs1VXR1X2sJet4UtcuzUlFSAXTUfycVSfQNes1NoBcBspAY6jpsmW3Zkgi1IyOvgo5-3xp8ue20gFFsWi-7Zfl5TjFIRcezkc4y54wDk8U6OGhO3NPdzjY1z_7xx3LZwXUyL4nbyVRcFtPe567sFNK2B4gq71P-WWlNOpyZE72LHyomzYbvOERA9rYN_8oJpLgMK-5EcZOKg2AUQI4CBvnbbulMWsLBoscq-6MwBF-SzBD8D31YaMgKUxV2BemHYV_3Yj2YQYb1ljZ_mFLQNRSDoV_oKw_MyHtUHOu-C_OvnJf_Mx9rKOqjfF2s2I_L4FmpyNg-TjHV6oD72yGQfe0LROLqgkzjUgBnP4hI8wL_8ImPWlsUmkUWWpXX4HyJ7xRGaTmmNjEJaa4FxV5AANAUbECJwJv3_iMco9LS07htuCfySUFQbXxTj8DNY6_BU5ANZHuGhM2Z5W_hC9BWQ5WdICrAPTCnSqfeW5Kntw2GrHX4j6lVQYvBhy8sjypmKFTjl47V5E_FJhnDap4RwkuIQIo57Wfd2wEye_P9QEH3a4h6wUlEr_bGmKJyLCO-1B9xzOQEW0-UvkJqirdKjOo-hGIzIBTcSOtWp0i5GgCAP4XWsVUKn3IZtorBH8Z1gcMdsQGXWFNBkg_tM7GewC-cIMypKg-RwZXFf0hMnb5h6cEjY8X1iXKHoo0KZFyT21ujIbeh5kMk4j8q7pP6NcXdbVzLL7SduK3cF75hKn3kO8owSmuqepHtATsuKy_kx8movOtGbYjPoV_BmxsSKSGXpQ4PRcBoXT3NoLxhZmazcb8EEVxNrIQ4eH-p01d-gVJNvacHfsJT9bcZmVN7zag_Fj5tfB3QZJI75wR039Im8XqICTXuajxINcdv_mjI2o3ZUyg5PkmxPhYK3HVHUhHyYdYkkqOdydLphlqXU6WbrE7xBIbKip_8lbqe8wD_8KbHxHCdZqJzlCJCBQWFPTr4mc45r_90NUe8LtvgfSzfe6FIGTc7h2ljymKsmf4QeZ4WTCZvy-NznbCVzlvsZms7atG51G8ec2qktGRy5AtK9zxTzqFbZQH3mdi0Z1sgfZJ3eq3amKNHu5vUGSm3AopXrkuMqbn7e8l4TR2A7ClRg7tjemU2DHKcNc6-6P6i4Lc5Er3ZJxMVjEK1ILHP_y29yYaR7vTTZmxxUy6Ryzh-_irqlW7ubu8pi5w2_F3dWjpmhBubt9l6vSwU0EHXmiY1L_xUfGrb5ukcLrOHl25mFOP3jrJ1Qs1dUtbj7epTwf0Voyql7Y18E9NNInxCL8lzua49wpjbaknvmS6bDIAOZL0Meq" charset="UTF-8"></script></head>
+	<body class="w3-light-gray">	
+		<div id="app" class="w3-container w3-row">
+			<div class="w3-row">
+			  <div class="w3-third w3-container w3-white w3-display-container " style="height:100%">
+				<h2>Produtos</h2>
+				
+				<ul class="w3-ul">
+					<li class="w3-display-container" v-for="p in filteredProdutos">
+					  {{p.name}} - R$ {{p.price}} - {{p.description}}
+					  <span class="w3-button w3-display-right" v-on:click="addCarrinho(p)" v-bind:disabled="total >= 100">&raquo;</span>
+					</li>
+				  </ul>
+				
+				<div v-show="cad" class="w3-display-bottommiddle" style="width:100%; padding:10px; margin-bottom:100px;">
+				<table class="w3-table">
+				<tr>
+				  <td>Nome:</td> 
+				  <td><input type="text" v-model="novoProduto.nome"></td>
+				</tr>
+				<tr>
+				  <td>Descrição:</td>
+				  <td><input type="text" v-model="novoProduto.descricao"></td>
+				</tr>
+				<tr>
+				  <td>Preço:</td>
+				  <td><input type="number" step="0.1" v-model="novoProduto.preco"></td>
+				</tr>
+				<tr>
+				  <td>Estoque:</td> 
+				  <td><input type="number" step="1" v-model="novoProduto.estoque"></td>
+				</tr>
+				<tr><td colspan="2"><button v-on:click="cadastrarProduto">Cadastrar</button></td>
+				</tr>
+				  </table>
+				</div> 
+				
+				<button class="w3-black w3-display-bottommiddle w3-button" style="width:100%; padding:10px" v-on:click="showCad()">
+				  Cadastrar Produto
+				</button> 
+				
+				
+			  </div>
+			  <div class="w3-rest w3-container">
+				<h2>Carrinho</h2>
+			  
+				<ul class="w3-ul">
+				  <li class="w3-display-container" v-for="(c, index) in carrinho">
+					{{c.name}} - R$ {{c.price}}
+					<span class="w3-button w3-display-right" v-on:click="delCarrinho(c,index)">x</span>
+				  </li>
+				</ul>
+			  
+				<h2 v-if="total > 0">Total {{total.toFixed(2)}}</h2> 
+				<button v-if="total > 0" v-on:click="limparCarrinho">Limpar Carrinho</button>
+			  
+			  </div>
+			</div>
+		</div>
+	</body>
+	<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+	<script>
+
+const app = Vue.createApp({
+	data() {
+		return{
+			produtos:[
+				{"name":"Jaleco","description":"Jaleco de alta qualidade fabricado para atender aos clientes mais exigentes","price":90.99,"available":4},
+				{"name":"Avental","description":"Avental fabricado para atender aos clientes mais exigentes","price":85.99,"available":3},
+				{"name":"Touca","description":"Touca fabricada em algodão","price":25.99,"available":10},
+				{"name":"Fronha","description":"Fronha para travesseiro excelente material agradável","price":29.99,"available":0},
+				{"name":"Embalagem","description":"Embalagem para presente","price":9.99,"available":999},
+				{"name":"Lençol","description":"Lenço branco casal tecido percal","price":99.99,"available":0},
+				{"name":"Porta objetos","description":"Porta objetos em zipper e acabamento a prova d'água","price":39.99,"available":3}
+			],
+			produto:[],
+			carrinho:[],
+			total:0,
+			cad:false,
+			novoProduto: {  // Adicione o objeto novoProduto aqui
+				nome: "",
+				descricao: "",
+				preco: 0,
+				estoque: 0,
+			}
+		}
+    },
+	computed: {
+		filteredProdutos() {
+			return this.produtos.filter(prods => prods.available > 0);
+		}
+	},
+    methods: {
+		showCad(){
+			if(this.cad == false){
+				this.cad = true;
+			}
+			else{
+				this.cad = false;
+			}
+		},
+		addCarrinho(item){
+			if (this.total + parseFloat(item.price) <= 100) {
+				this.carrinho.push(item);
+				this.total += parseFloat(item.price);
+			}
+		},
+		delCarrinho(item, index){
+			this.carrinho.splice(index,1);
+			this.total -= parseFloat(item.price);
+		},
+		limparCarrinho() {
+			this.carrinho = [];
+			this.total = 0;
+		},
+		cadastrarProduto() {
+			// Adicione o novo produto à lista de produtos existente
+			this.produtos.push({
+				name: this.novoProduto.nome,
+				description: this.novoProduto.descricao,
+				price: parseFloat(this.novoProduto.preco),
+				available: parseInt(this.novoProduto.estoque),
+			});
+
+			// Limpe os campos do novo produto
+			this.novoProduto = {
+				nome: "",
+				descricao: "",
+				preco: 0,
+				estoque: 0,
+			};
+		}
+	}
+})
+app.mount('#app')
+
+	</script>
+</html>
